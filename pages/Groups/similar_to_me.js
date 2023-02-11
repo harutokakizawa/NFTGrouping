@@ -20,7 +20,7 @@ export default function similar_to_me() {
   
 
   const alchemyConfig = {
-    apiKey: "_G2d1vbQhp9CpDFEMQaAqB6xtUlXQMqq",
+    apiKey: process.env.ALCHEMY_ID,
     network: Network.ETH_MAINNET,
   };
 
