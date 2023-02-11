@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "13.1.6",
+<<<<<<< HEAD
     "@rainbow-me/rainbowkit": "^0.8.1",
     "alchemy-sdk": "^2.4.3",
     "ethers": "^5.7.2",
@@ -31,4 +32,12 @@
     "url": "https://github.com/harutokakizawa/NFTGrouping/issues"
   },
   "homepage": "https://github.com/harutokakizawa/NFTGrouping#readme"
+=======
+    "eslint": "8.33.0",
+    "eslint-config-next": "13.1.6",
+    "next": "13.1.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+>>>>>>> origin/main
 }
