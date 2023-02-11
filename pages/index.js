@@ -4,15 +4,24 @@ import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { useNetwork } from 'wagmi'
-
+import { useAccount, useNetwork } from 'wagmi'
+import { Alchemy,Network } from "alchemy-sdk";
 
 const inter = Inter({ subsets: ['latin'] })
+
 
 export default function Home() {
 
   const  {chain, chains}  = useNetwork();
 
+  const {address, connector} = useAccount();
+
+  const alchemyConfig = {
+    apiKey: process.env.ALCHEMY_ID,
+    network: Network.ETH_MAINNET,
+  };
+
+  const alchemy = new Alchemy(alchemyConfig);
 
   return (
     <>
@@ -23,9 +32,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-          <Link href="/Groups/socials">socials</Link>
+      {chain && <h1>{address},Welcome to {chain.name} World</h1>}
+          <Link href="/Groups/similar_to_me">similar to me</Link>
           <ConnectButton />
-          {chain && <h1 className={styles.center}>Welcome to {chain.name} World</h1>}
+          
       </main>
     </>
   )
