@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import '../styles/globals.css';
-=======
-import '../styles/globals.css'
->>>>>>> origin/main
 import '@rainbow-me/rainbowkit/styles.css';
 import {
   getDefaultWallets,
@@ -12,10 +8,7 @@ import { configureChains, createClient, WagmiConfig } from 'wagmi';
 import { mainnet, polygon, optimism, arbitrum } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
-<<<<<<< HEAD
 import { Network } from "alchemy-sdk";
-=======
->>>>>>> origin/main
 
 const { chains, provider } = configureChains(
   [mainnet, polygon, optimism, arbitrum],
@@ -36,11 +29,8 @@ const wagmiClient = createClient({
   provider
 });
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> origin/main
 export default function App({ Component, pageProps }) {
   return (
     <WagmiConfig client={wagmiClient}>

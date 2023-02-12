@@ -9,38 +9,54 @@ import { Alchemy,Network } from "alchemy-sdk";
 
 const inter = Inter({ subsets: ['latin'] })
 
+
 let numNfts = 0;
+let score = 0;
 
 
 export default function similar_to_me() {
 
+const {address, connector} = useAccount();
 
-  const {address, connector} = useAccount();
 
-  
+const alchemyConfig = {
+  apiKey: "_G2d1vbQhp9CpDFEMQaAqB6xtUlXQMqq",
+  network: Network.ETH_MAINNET,
+};
 
-  const alchemyConfig = {
-    apiKey: process.env.ALCHEMY_ID,
-    network: Network.ETH_MAINNET,
-  };
+const alchemy = new Alchemy(alchemyConfig);
 
-  const alchemy = new Alchemy(alchemyConfig);
-    
+
+
   const main = async () => {
     
     // Get all NFTs
     const nfts = await alchemy.nft.getNftsForOwner(address);
     // Print NFTs
     numNfts = nfts["totalCount"];
-    const nftList = nfts["ownedNfts"];
+    let nftList = nfts["ownedNfts"];
 
-  
     let i = 1;
-  
     for (let nft of nftList) {
-      console.log(`${i}. ${nft.title}`);
+      console.log(`${i}. ${nft.title}, ${nft.contract.address}`);
       i++;
+
+
+      if (nft.contract.address === "0x8f96b11707aa7274634b54076735c9dc06648397"){
+        score += 10;
+      }else if(nft.contract.address === "0x495f947276749ce646f68ac8c248420045cb7b5e"){
+        score += 10;
+      }else if(nft.contract.address === "0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85"){
+        score += 10;
+      }else if(nft.contract.address === "0xca6d7604ae55ba1ba864c26692a91979f25cdb96"){
+        score += 10;
+      }else if(nft.contract.address === "0xf8527def19d2d40226e5ebccf3cd5a27cca63efa"){
+        score += 10;
+      }
+
+      console.log(score);
     }
+    
   };
 
   const runMain = async () => {
@@ -53,8 +69,6 @@ export default function similar_to_me() {
     }
   };
   
-  runMain();
-
     return (
         <>
           <Head>
@@ -64,9 +78,18 @@ export default function similar_to_me() {
             <link rel="icon" href="/favicon.ico" />
           </Head>
           <main className={styles.main}>
-            <h1>similar to me</h1>
+            <h1>similar to harutokakizawa.eth</h1>
             
-            <p>Total NFTs owned by {address}: {numNfts} </p>
+            <div>
+              <button onClick={runMain}>スコア算出</button>
+              <a>一回しか押さないでください</a>
+            </div>
+
+
+
+            
+            <p>score: {score}</p>
+
               <Link href="/">Topへ</Link>
               
           </main>
