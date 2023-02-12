@@ -6,8 +6,7 @@ import { useAccount } from 'wagmi'
 import { Alchemy,Network } from "alchemy-sdk";
 
 
-
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 
 let numNfts = 0;
@@ -15,6 +14,8 @@ let score = 0;
 
 
 export default function similar_to_me() {
+
+
 
 const {address, connector} = useAccount();
 
@@ -83,12 +84,25 @@ const alchemy = new Alchemy(alchemyConfig);
             <div>
               <button onClick={runMain}>スコア算出</button>
               <a>一回しか押さないでください</a>
+              <p>score: {score}</p>
             </div>
+
+
+            <h3>参照コントラクト</h3>
+            <a href='https://etherscan.io/address/0x8f96b11707aa7274634b54076735c9dc06648397'>0x8f96b11707aa7274634b54076735c9dc06648397</a>
+            <a href='https://etherscan.io/address/0x495f947276749ce646f68ac8c248420045cb7b5e'>0x495f947276749ce646f68ac8c248420045cb7b5e</a>
+            <a href='https://etherscan.io/address/0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85'>0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85</a>
+            <a href='https://etherscan.io/address/0xca6d7604ae55ba1ba864c26692a91979f25cdb96'>0xca6d7604ae55ba1ba864c26692a91979f25cdb96</a>
+            <a href='https://etherscan.io/address/0xf8527def19d2d40226e5ebccf3cd5a27cca63efa'>0xf8527def19d2d40226e5ebccf3cd5a27cca63efa</a>
+
+
+
+
 
 
 
             
-            <p>score: {score}</p>
+            
 
               <Link href="/">Topへ</Link>
               
